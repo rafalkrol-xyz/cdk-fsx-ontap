@@ -17,6 +17,7 @@
     "package": "npx projen package",
     "package-all": "npx projen package-all",
     "package:js": "npx projen package:js",
+    "package:python": "npx projen package:python",
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
@@ -63,10 +64,14 @@
     "constructs": "^10.0.5"
   },
   "keywords": [
-    "cdk"
+    "aws",
+    "awscdk",
+    "cdk",
+    "fsx",
+    "ontap"
   ],
   "main": "lib/index.js",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "version": "0.0.0",
   "jest": {
     "testMatch": [
@@ -112,7 +117,12 @@
   "stability": "stable",
   "jsii": {
     "outdir": "dist",
-    "targets": {},
+    "targets": {
+      "python": {
+        "distName": "cdk-fsx-ontap",
+        "module": "cdk_fsx_ontap"
+      }
+    },
     "tsc": {
       "outDir": "lib",
       "rootDir": "src"
