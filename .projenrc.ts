@@ -14,6 +14,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
     module: 'cdk_fsx_ontap',
   },
   license: 'MIT',
+  keywords: ['awscdk', 'aws', 'cdk', 'fsx', 'ontap'],
 
   // deps: [],                /* Runtime dependencies of this module. */
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
