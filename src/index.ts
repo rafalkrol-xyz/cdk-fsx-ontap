@@ -4,8 +4,21 @@ import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
 import { Construct } from 'constructs';
 
 export interface FsxOntapProps {
+  /**
+   * Name of the FSx for NetApp ONTAP Storage Virtual Machine (SVM).
+   * Also used in resource ID creation, e.g. `${name}-resource-type`.
+   * @default 'fsx-ontap'
+   */
   readonly name?: string;
+  /**
+   * Path to mount the FSx for NetApp ONTAP instance.
+   * @default '/mnt/fsx'
+   */
   readonly mountPath?: string;
+  /**
+   * Name of the mount point.
+   * @default '/datavol'
+   */
   readonly mountName?: string;
   /**
    * Amazon FSx for NetApp ONTAP accepts either one or two subnets.
