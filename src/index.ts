@@ -4,16 +4,16 @@ import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
 import { Construct } from 'constructs';
 
 export interface FsxOntapProps {
-  name?: string;
-  mountPath?: string;
-  mountName?: string;
+  readonly name?: string;
+  readonly mountPath?: string;
+  readonly mountName?: string;
   /**
    * Amazon FSx for NetApp ONTAP accepts either one or two subnets.
    * @see https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/high-availability-AZ.html
    */
   privateSubnets: [PrivateSubnet] | [PrivateSubnet, PrivateSubnet];
-  fsxAdminPasswordSecretName: string;
-  fsxSecurityGroup: SecurityGroup;
+  readonly fsxAdminPasswordSecretName: string;
+  readonly fsxSecurityGroup: SecurityGroup;
 }
 
 export class FsxOntap extends Construct {
