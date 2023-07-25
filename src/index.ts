@@ -120,6 +120,11 @@ export class FsxOntap extends Construct {
 
     this.dnsName = `${svm.logicalId}.${cfnFileSystem.ref}.fsx.${Stack.of(this).region}.amazonaws.com`;
 
+    new CfnOutput(this, `${name}-fsx-admin-password`, {
+      value: fsxAdminPassword.secretValue.toString(),
+    });
+  }
+
   private replaceDashesWithUnderscores(str: string): string {
     return str.replace(/-/g, '_');
   }
