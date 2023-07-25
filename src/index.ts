@@ -98,7 +98,16 @@ export class FsxOntap extends Construct {
     });
 
     new fsx.CfnVolume(this, `${name}-volume`, {
-      name: `${name}-volume`,
+      /**
+       * A volume name must begin with a letter or underscore,
+       * can only contain alphanumeric characters or underscores (`_`),
+       * and cannot exceed 203 characters in length
+       */
+      name:
+        this.trimStringAt203rdCharacter(
+          this.removeNonAlphanumericOrUnderscores(
+            this.replaceDashesWithUnderscores(name),
+          ).concat('volume')),
       volumeType: 'ONTAP',
       ontapConfiguration: {
         junctionPath: this.mountName,
