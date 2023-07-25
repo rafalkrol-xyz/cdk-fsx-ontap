@@ -164,46 +164,33 @@ const fsxOntapProps: FsxOntapProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#cdk-fsx-ontap.FsxOntapProps.property.fsxAdminPasswordSecretName">fsxAdminPasswordSecretName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdk-fsx-ontap.FsxOntapProps.property.fsxSecurityGroup">fsxSecurityGroup</a></code> | <code>aws-cdk-lib.aws_ec2.SecurityGroup</code> | *No description.* |
-| <code><a href="#cdk-fsx-ontap.FsxOntapProps.property.privateSubnets">privateSubnets</a></code> | <code>aws-cdk-lib.aws_ec2.PrivateSubnet[]</code> | Amazon FSx for NetApp ONTAP accepts either one or two subnets. |
-| <code><a href="#cdk-fsx-ontap.FsxOntapProps.property.mountName">mountName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdk-fsx-ontap.FsxOntapProps.property.mountPath">mountPath</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#cdk-fsx-ontap.FsxOntapProps.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#cdk-fsx-ontap.FsxOntapProps.property.securityGroupSource">securityGroupSource</a></code> | <code>aws-cdk-lib.aws_ec2.SecurityGroup</code> | *No description.* |
+| <code><a href="#cdk-fsx-ontap.FsxOntapProps.property.vpc">vpc</a></code> | <code>aws-cdk-lib.aws_ec2.Vpc</code> | VPC in which the FSx for NetApp ONTAP instance will be created. |
+| <code><a href="#cdk-fsx-ontap.FsxOntapProps.property.mountName">mountName</a></code> | <code>string</code> | Name of the mount point. |
+| <code><a href="#cdk-fsx-ontap.FsxOntapProps.property.mountPath">mountPath</a></code> | <code>string</code> | Path to mount the FSx for NetApp ONTAP instance. |
+| <code><a href="#cdk-fsx-ontap.FsxOntapProps.property.name">name</a></code> | <code>string</code> | Name of the FSx for NetApp ONTAP Storage Virtual Machine (SVM). |
 
 ---
 
-##### `fsxAdminPasswordSecretName`<sup>Required</sup> <a name="fsxAdminPasswordSecretName" id="cdk-fsx-ontap.FsxOntapProps.property.fsxAdminPasswordSecretName"></a>
+##### `securityGroupSource`<sup>Required</sup> <a name="securityGroupSource" id="cdk-fsx-ontap.FsxOntapProps.property.securityGroupSource"></a>
 
 ```typescript
-public readonly fsxAdminPasswordSecretName: string;
-```
-
-- *Type:* string
-
----
-
-##### `fsxSecurityGroup`<sup>Required</sup> <a name="fsxSecurityGroup" id="cdk-fsx-ontap.FsxOntapProps.property.fsxSecurityGroup"></a>
-
-```typescript
-public readonly fsxSecurityGroup: SecurityGroup;
+public readonly securityGroupSource: SecurityGroup;
 ```
 
 - *Type:* aws-cdk-lib.aws_ec2.SecurityGroup
 
 ---
 
-##### `privateSubnets`<sup>Required</sup> <a name="privateSubnets" id="cdk-fsx-ontap.FsxOntapProps.property.privateSubnets"></a>
+##### `vpc`<sup>Required</sup> <a name="vpc" id="cdk-fsx-ontap.FsxOntapProps.property.vpc"></a>
 
 ```typescript
-public readonly privateSubnets: PrivateSubnet[];
+public readonly vpc: Vpc;
 ```
 
-- *Type:* aws-cdk-lib.aws_ec2.PrivateSubnet[]
+- *Type:* aws-cdk-lib.aws_ec2.Vpc
 
-Amazon FSx for NetApp ONTAP accepts either one or two subnets.
-
-> [https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/high-availability-AZ.html](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/high-availability-AZ.html)
+VPC in which the FSx for NetApp ONTAP instance will be created.
 
 ---
 
@@ -214,6 +201,9 @@ public readonly mountName: string;
 ```
 
 - *Type:* string
+- *Default:* '/datavol'
+
+Name of the mount point.
 
 ---
 
@@ -224,6 +214,9 @@ public readonly mountPath: string;
 ```
 
 - *Type:* string
+- *Default:* '/mnt/fsx'
+
+Path to mount the FSx for NetApp ONTAP instance.
 
 ---
 
@@ -234,6 +227,11 @@ public readonly name: string;
 ```
 
 - *Type:* string
+- *Default:* 'fsx-ontap'
+
+Name of the FSx for NetApp ONTAP Storage Virtual Machine (SVM).
+
+Also used in resource ID creation, e.g. `${name}-resource-type`.
 
 ---
 
