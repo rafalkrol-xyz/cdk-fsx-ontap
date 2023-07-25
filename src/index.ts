@@ -64,6 +64,12 @@ export class FsxOntap extends Construct {
       },
     });
 
+    const fsxSecurityGroup = new SecurityGroup(this, `${name}-fsx-security-group`, {
+      vpc,
+      description: 'The security group for the FSx for NetApp ONTAP service',
+      allowAllOutbound: true,
+    });
+    this.addIngressToFsxFromSourceSg(props.securityGroupSource, fsxSecurityGroup);
 
     const cfnFileSystem = new fsx.CfnFileSystem(this, `${name}-filesystem`, {
       fileSystemType: 'ONTAP',
