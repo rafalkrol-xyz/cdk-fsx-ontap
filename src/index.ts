@@ -45,8 +45,16 @@ export class FsxOntap extends Construct {
       this.mountPath = props.mountPath;
     }
 
-    if (props.privateSubnets.length !== 2 && props.privateSubnets.length !== 1) {
-      throw new Error('FSx for NetApp ONTAP accepts either one or two subnets.');
+    const vpc = props.vpc;
+    /**
+    * Amazon FSx for NetApp ONTAP accepts either one or two subnets.
+    * NB, this construct requires them to be private ones.
+    * @see https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/high-availability-AZ.html
+    */
+    const privateSubnetsForFsx = vpc.privateSubnets.slice(0, 2);
+
+    if (privateSubnetsForFsx.length !== 2 && privateSubnetsForFsx.length !== 1) {
+      throw new Error('FSx for NetApp ONTAP accepts either one or two subnets. Moreover, they must be private subnets!');
     }
 
     const fsxAdminPassword = Secret.fromSecretNameV2(
