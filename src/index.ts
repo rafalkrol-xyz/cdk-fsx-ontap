@@ -95,5 +95,52 @@ export class FsxOntap extends Construct {
     });
 
     this.dnsName = `${svm.logicalId}.${cfnFileSystem.ref}.fsx.${Stack.of(this).region}.amazonaws.com`;
+
+  private replaceDashesWithUnderscores(str: string): string {
+    return str.replace(/-/g, '_');
+  }
+
+  private removeNonAlphanumericOrUnderscores(str: string): string {
+    return str.replace(/[^a-zA-Z0-9_]/g, '');
+  }
+
+  private trimStringAt203rdCharacter(str: string): string {
+    return str.substring(0, 202);
+  }
+
+  /**
+  * Configure Security Group for FsX
+  * @see https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/limit-access-security-groups.html
+  */
+  private addIngressToFsxFromSourceSg(securityGroupSource: SecurityGroup, fsxSecurityGroup: SecurityGroup): void {
+    fsxSecurityGroup.addIngressRule(Peer.anyIpv4(), Port.tcp(2049), 'allow 2049 inbound from anywhere');
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.icmpPing());
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(22));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(111));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(135));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(139));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(161));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(162));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(443));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(445));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(635));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(749));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(2049));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(3260));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(4045));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(4046));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(11104));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(11105));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.udp(111));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.udp(135));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.udp(137));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.udp(139));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.udp(161));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.udp(162));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.udp(635));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.udp(2049));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.udp(4045));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.udp(4046));
+    fsxSecurityGroup.addIngressRule(securityGroupSource, Port.udp(4049));
   }
 }
