@@ -57,10 +57,13 @@ export class FsxOntap extends Construct {
       throw new Error('FSx for NetApp ONTAP accepts either one or two subnets. Moreover, they must be private subnets!');
     }
 
-    const fsxAdminPassword = Secret.fromSecretNameV2(
-      this,
-      `${name}-admin-password`,
-      props.fsxAdminPasswordSecretName).secretValue.toString();
+    // Create a random password for the FSx for NetApp ONTAP admin user.
+    const fsxAdminPassword = new Secret(this, `${name}`, {
+      generateSecretString: {
+        excludePunctuation: true,
+      },
+    });
+
 
     const cfnFileSystem = new fsx.CfnFileSystem(this, `${name}-filesystem`, {
       fileSystemType: 'ONTAP',
