@@ -15,7 +15,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
   license: 'MIT',
   keywords: ['awscdk', 'aws', 'cdk', 'fsx', 'ontap'],
-  gitignore: ['.DS_Store', 'cdk.out'],
+  gitignore: ['.DS_Store', 'cdk.out', 'cdk.context.json'],
 });
 
 project.synth();
