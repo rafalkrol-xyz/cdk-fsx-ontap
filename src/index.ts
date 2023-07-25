@@ -1,5 +1,5 @@
-import { Stack, aws_fsx as fsx } from 'aws-cdk-lib';
-import { ISubnet, SecurityGroup } from 'aws-cdk-lib/aws-ec2';
+import { Stack, aws_fsx as fsx, CfnOutput } from 'aws-cdk-lib';
+import { SecurityGroup, Vpc, Peer, Port } from 'aws-cdk-lib/aws-ec2';
 import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
 import { Construct } from 'constructs';
 
@@ -21,12 +21,10 @@ export interface FsxOntapProps {
    */
   readonly mountName?: string;
   /**
-   * Amazon FSx for NetApp ONTAP accepts either one or two subnets.
-   * @see https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/high-availability-AZ.html
+   * VPC in which the FSx for NetApp ONTAP instance will be created.
    */
-  readonly privateSubnets: ISubnet[];
-  readonly fsxAdminPasswordSecretName: string;
-  readonly fsxSecurityGroup: SecurityGroup;
+  readonly vpc: Vpc;
+  readonly securityGroupSource: SecurityGroup;
 }
 
 export class FsxOntap extends Construct {
