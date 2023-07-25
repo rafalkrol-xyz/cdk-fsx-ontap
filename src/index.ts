@@ -73,20 +73,20 @@ export class FsxOntap extends Construct {
 
     const cfnFileSystem = new fsx.CfnFileSystem(this, `${name}-filesystem`, {
       fileSystemType: 'ONTAP',
-      subnetIds: props.privateSubnets.map(s => s.subnetId),
+      subnetIds: privateSubnetsForFsx.map(s => s.subnetId),
 
       ontapConfiguration: {
-        fsxAdminPassword,
-        deploymentType: props.privateSubnets.length === 2 ? 'MULTI_AZ_1' : 'SINGLE_AZ_1',
+        fsxAdminPassword: fsxAdminPassword.secretValue.toString(),
+        deploymentType: privateSubnetsForFsx.length === 2 ? 'MULTI_AZ_1' : 'SINGLE_AZ_1',
         diskIopsConfiguration: {
           iops: 40000,
           mode: 'USER_PROVISIONED',
         },
-        preferredSubnetId: props.privateSubnets[0].subnetId,
-        routeTableIds: props.privateSubnets.map(s => s.routeTable.routeTableId),
+        preferredSubnetId: privateSubnetsForFsx[0].subnetId,
+        routeTableIds: privateSubnetsForFsx.map(s => s.routeTable.routeTableId),
         throughputCapacity: 256,
       },
-      securityGroupIds: [props.fsxSecurityGroup.securityGroupId],
+      securityGroupIds: [fsxSecurityGroup.securityGroupId],
       storageCapacity: 10240,
       storageType: 'SSD',
     });
