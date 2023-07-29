@@ -1,3 +1,20 @@
+/**
+ * This is a basic example of how to create an FSxOntap construct.
+ * You can test it out by running the following commands from the root of this repository:
+ *
+ * ```bash
+ * # build project
+ * npx projen build
+ * # synthesize
+ * cdk synth --app lib/examples/basic.js
+ * # diff
+ * cdk diff --app lib/examples/basic.js
+ * # deploy
+ * cdk deploy --app lib/examples/basic.js
+ * # destroy
+ * cdk destroy --app lib/examples/basic.js
+ * ```
+ */
 import * as cdk from 'aws-cdk-lib';
 import { Vpc, SecurityGroup } from 'aws-cdk-lib/aws-ec2';
 import { FsxOntap } from '../index';
@@ -18,10 +35,10 @@ const vpc = new Vpc(stack, 'VPC', {
   maxAzs: 2,
 });
 
-// create a security group from which the connection to FSx Ontap will be allowed
+// create a security group from which the connection to FSx ONTAP will be allowed
 const ec2SecurityGroup = new SecurityGroup(stack, 'ec2SecurityGroup', {
   vpc,
-  description: 'ec2 instance securitygroup',
+  description: 'It can connect to FSx ONTAP',
   allowAllOutbound: true,
 });
 
