@@ -142,7 +142,7 @@ export class FsxOntap extends Construct {
   * @see https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/limit-access-security-groups.html
   */
   private addIngressToFsxFromSourceSg(securityGroupSource: SecurityGroup, fsxSecurityGroup: SecurityGroup): void {
-    fsxSecurityGroup.addIngressRule(Peer.anyIpv4(), Port.tcp(2049), 'allow 2049 inbound from anywhere');
+    fsxSecurityGroup.addIngressRule(Peer.anyIpv4(), Port.tcp(2049), 'Allow 2049 inbound from anywhere');
     fsxSecurityGroup.addIngressRule(securityGroupSource, Port.icmpPing());
     fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(22));
     fsxSecurityGroup.addIngressRule(securityGroupSource, Port.tcp(111));
