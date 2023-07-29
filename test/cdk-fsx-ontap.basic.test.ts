@@ -26,7 +26,17 @@ describe('FsxOntap in a basic setup (i.e. only default values)', () => {
   });
 
   test('should create a Security Group', () => {
-    template.resourceCountIs('AWS::EC2::SecurityGroup', 1);
+    template.hasResourceProperties('AWS::EC2::SecurityGroup', {
+      SecurityGroupIngress: [
+        {
+          CidrIp: '0.0.0.0/0',
+          Description: 'Allow 2049 inbound from anywhere',
+          FromPort: 2049,
+          IpProtocol: 'tcp',
+          ToPort: 2049,
+        },
+      ],
+    });
   });
 
   test('should create an FSx ONTAP filesystem', () => {
