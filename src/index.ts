@@ -120,8 +120,8 @@ export class FsxOntap extends Construct {
 
     this.dnsName = `${svm.logicalId}.${cfnFileSystem.ref}.fsx.${Stack.of(this).region}.amazonaws.com`;
 
-    new CfnOutput(this, `${name}-fsx-admin-password`, {
-      value: fsxAdminPassword.secretValue.toString(),
+    new CfnOutput(this, `${name}-fsx-admin-password-name`, {
+      value: fsxAdminPassword.secretName,
     });
   }
 
