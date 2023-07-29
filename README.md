@@ -1,5 +1,8 @@
 # CDK FSx ONTAP
 
+![AWS CDK Version](https://img.shields.io/badge/AWS%20CDK-v2-blue)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
 ## Overview
 
 [An AWS Cloud Development Kit (CDK) construct](https://docs.aws.amazon.com/cdk/v2/guide/constructs.html)
