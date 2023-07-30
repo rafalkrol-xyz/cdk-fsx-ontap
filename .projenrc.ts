@@ -5,6 +5,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   authorAddress: 'ameotoko1+github@gmail.com',
   homepage: 'https://rafalkrol.xyz',
   repositoryUrl: 'https://github.com/rafalkrol-xyz/cdk-fsx-ontap',
+  majorVersion: 1,
   cdkVersion: '2.85.0',
   defaultReleaseBranch: 'main',
   jsiiVersion: '~5.0.0',
