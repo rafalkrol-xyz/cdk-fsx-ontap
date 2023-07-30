@@ -8,7 +8,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   jsiiVersion: '~5.0.0',
   name: 'cdk-fsx-ontap',
   projenrcTs: true,
-  repositoryUrl: 'git@github.com:rafalkrol-xyz/cdk-fsx-ontap.git',
+  repositoryUrl: 'https://github.com/rafalkrol-xyz/cdk-fsx-ontap',
   publishToPypi: {
     distName: 'cdk-fsx-ontap',
     module: 'cdk_fsx_ontap',
