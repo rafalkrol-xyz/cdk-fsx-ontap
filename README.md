@@ -23,6 +23,22 @@ for deploying shared file storage using
   pip install rafalkrol-xyz.cdk_fsx_ontap
   ```
 
+## Usage
+
+**a)** basic - going with all of the defaults
+
+NB, check the full example in [src/examples/basic.ts](src/examples/basic.ts)
+
+```typescript
+declare const vpc: ec2.Vpc;
+declare const securityGroupSource: ec2.SecurityGroup;
+
+new FsxOntap(this, 'FsxOntap', {
+  vpc,
+  ec2SecurityGroup,
+});
+```
+
 ## Acknowledgements
 
 This project utilizes [projen](https://github.com/projen/projen) (_star it on GitHub_)
