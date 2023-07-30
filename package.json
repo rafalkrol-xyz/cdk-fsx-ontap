@@ -1,8 +1,9 @@
 {
   "name": "cdk-fsx-ontap",
+  "description": "CDK construct for Amazon FSx for Netapp ONTAP",
   "repository": {
     "type": "git",
-    "url": "git@github.com:rafalkrol-xyz/cdk-fsx-ontap.git"
+    "url": "https://github.com/rafalkrol-xyz/cdk-fsx-ontap"
   },
   "scripts": {
     "build": "npx projen build",
@@ -72,6 +73,7 @@
   ],
   "main": "lib/index.js",
   "license": "MIT",
+  "homepage": "https://rafalkrol.xyz",
   "version": "0.0.0",
   "jest": {
     "testMatch": [
@@ -119,8 +121,8 @@
     "outdir": "dist",
     "targets": {
       "python": {
-        "distName": "cdk-fsx-ontap",
-        "module": "cdk_fsx_ontap"
+        "distName": "rafalkrol-xyz.cdk-fsx-ontap",
+        "module": "rafalkrol-xyz.cdk_fsx_ontap"
       }
     },
     "tsc": {

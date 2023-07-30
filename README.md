@@ -14,7 +14,7 @@ for deploying shared file storage using
 * TypeScript
 
   ```bash
-  yarn add @rafalkrol-xyz/cdk-fsx-ontap
+  yarn add cdk-fsx-ontap
   ```
 
 * Python
@@ -22,6 +22,22 @@ for deploying shared file storage using
   ```bash
   pip install rafalkrol-xyz.cdk_fsx_ontap
   ```
+
+## Usage
+
+**a)** basic - going with all of the defaults
+
+NB, check the full example in [src/examples/basic.ts](src/examples/basic.ts)
+
+```typescript
+declare const vpc: ec2.Vpc;
+declare const securityGroupSource: ec2.SecurityGroup;
+
+new FsxOntap(this, 'FsxOntap', {
+  vpc,
+  ec2SecurityGroup,
+});
+```
 
 ## Acknowledgements
 
