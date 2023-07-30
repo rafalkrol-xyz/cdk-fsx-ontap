@@ -14,7 +14,7 @@ for deploying shared file storage using
 * TypeScript
 
   ```bash
-  yarn add @rafalkrol-xyz/cdk-fsx-ontap
+  yarn add cdk-fsx-ontap
   ```
 
 * Python
