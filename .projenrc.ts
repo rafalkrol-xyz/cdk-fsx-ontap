@@ -6,6 +6,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   homepage: 'https://rafalkrol.xyz',
   repositoryUrl: 'https://github.com/rafalkrol-xyz/cdk-fsx-ontap',
   name: 'cdk-fsx-ontap',
+  description: 'CDK construct for Amazon FSx for Netapp ONTAP',
   majorVersion: 1,
   defaultReleaseBranch: 'main',
   cdkVersion: '2.85.0',
