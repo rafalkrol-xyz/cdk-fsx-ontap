@@ -17,6 +17,8 @@
  */
 import * as cdk from 'aws-cdk-lib';
 import { Vpc, SecurityGroup } from 'aws-cdk-lib/aws-ec2';
+// change the below line to `import { FsxOntap } from 'cdk-fsx-ontap';`,
+// when testing from outside of this repository.
 import { FsxOntap } from '../index';
 
 // create a CDK app
