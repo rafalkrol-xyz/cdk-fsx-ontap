@@ -13,8 +13,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
   jsiiVersion: '~5.0.0',
   projenrcTs: true,
   publishToPypi: {
-    distName: 'rafalkrol-xyz.cdk-fsx-ontap',
-    module: 'rafalkrol-xyz.cdk_fsx_ontap',
+    distName: 'cdk-fsx-ontap',
+    module: 'cdk_fsx_ontap',
   },
   license: 'MIT',
   keywords: ['awscdk', 'aws', 'cdk', 'fsx', 'ontap'],
