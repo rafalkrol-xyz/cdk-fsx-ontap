@@ -20,7 +20,7 @@ for deploying shared file storage using
 * Python
 
   ```bash
-  pip install rafalkrol-xyz.cdk_fsx_ontap
+  pip install cdk-fsx-ontap
   ```
 
 ## Usage
